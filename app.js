@@ -5,13 +5,14 @@ const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 
 search.addEventListener('click', () => {
+    // API Key
     const APIkey = '288e5ea4ad88ff511f62bbd07d71f6d1';
     const location = document.querySelector('.search-box input').value;
 
     if(location === ''){
         return;
     }
-
+    
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`)
         .then(response => response.json())
         .then(json => {
@@ -33,6 +34,7 @@ search.addEventListener('click', () => {
             const humidity = document.querySelector('.weather-details .humidity span');
             const wind = document.querySelector('.weather-details .wind span');
 
+            // Switch for choosing weather type
             switch(json.weather[0].main){
                 case 'Clear':
                     image.src = 'Images/weather_clear.png';
@@ -58,6 +60,7 @@ search.addEventListener('click', () => {
             humidity.innerHTML = `${json.main.humidity}%`;
             wind.innerHTML = `${parseInt(json.wind.speed)}km/h`;
 
+            // Changing style back to original state
             weatherBox.style.display = '';
             weatherDetails.style.display = '';
             container.style.height = '590px';
