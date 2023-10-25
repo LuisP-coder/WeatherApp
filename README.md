@@ -1,5 +1,5 @@
 # WeatherApp
-Simple WeatherApp
+Simple WeatherApp using api
 
 
 Enter City location to see Current weather
